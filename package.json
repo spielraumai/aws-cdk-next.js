@@ -1,0 +1,44 @@
+{
+  "name": "cdk-nextjs-monorepo",
+  "version": "0.0.1",
+  "description": "Deploy your serverless next applications using the AWS cloud development kit",
+  "keywords": [
+    "aws",
+    "aws cdk",
+    "cloud development kit",
+    "nextjs",
+    "lambda",
+    "next",
+    "api gateway"
+  ],
+  "scripts": {
+    "test": "jest --runInBand --coverage",
+    "packages-install": "lerna exec -- yarn install --frozen-lockfile",
+    "packages-build": "lerna run build",
+    "lint": "eslint .",
+    "postinstall": "yarn packages-install && opencollective-postinstall || true",
+    "docs": "cd documentation && yarn && yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spielraumai/aws-cdk-next.js"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Spielraum.ai <hello@spielraum.ai>",
+    "url": "https://nextjs.spielraum.ai"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "packages/@cdk-nextjs/*",
+      "packages/cdk-nextjs/*"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,md,yml}": "prettier --write"
+  }
+}
